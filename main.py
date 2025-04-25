@@ -72,7 +72,7 @@ def detect_financial_type(header: str):
         return "Annual"
     return "Monthly"
 
-@app.post("/process-excel/")
+@app.post("/process_cash_flow/")
 async def process_excel(file: UploadFile = File(...), project_id: int = Form(...)):
     contents = await file.read()
     df_full = pd.read_excel(BytesIO(contents), sheet_name="CF Summary Resi- CTC", header=None)
